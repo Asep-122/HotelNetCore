@@ -1,0 +1,264 @@
+
+@model Hotel.Models.Fasilitas.FasilitasEditViewModels
+
+@{
+    var No = 0;
+    Layout = "_Layout";
+}
+
+<div style="width: 100%;">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#Bisnis" type="button" role="tab" aria-controls="home" aria-selected="true">Bisnis</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="Publik-tab" data-bs-toggle="tab" data-bs-target="#Publik" type="button" role="tab" aria-controls="Publik" aria-selected="false">Publik</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="Umum-tab" data-bs-toggle="tab" data-bs-target="#Umum" type="button" role="tab" aria-controls="Umum" aria-selected="false">Umum</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="Kamar-tab" data-bs-toggle="tab" data-bs-target="#Kamar" type="button" role="tab" aria-controls="Kamar" aria-selected="false">Kamar</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="Makanan-tab" data-bs-toggle="tab" data-bs-target="#Makanan" type="button" role="tab" aria-controls="Makanan" aria-selected="false">Makanan</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="Transportasi-tab" data-bs-toggle="tab" data-bs-target="#Transportasi" type="button" role="tab" aria-controls="Transportasi" aria-selected="false">Transportasi</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="Bisnis" role="tabpanel" aria-labelledby="Bisnis-tab">
+            <button class="btn btn-outline-success btn-rounded btn-fw btn-sm" onclick="index.CreatePopUpBisnis(event)"><i class="fa-solid fa-plus"></i></button>
+            <table class="table table-striped" id="FasilitasBisnis" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="width: 1%;">No</th>
+                        <th style="width: 5%;">Action</th>
+                        <th>Jenis</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{ No = 1;}
+                    @foreach (var item in Model.FasilitasBisnis)
+                    {
+                        <tr>
+                            <td>@(No++)</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-rounded btn-fw btn-sm" data-Id="@(item.Id)" onclick="index.EditPopUpBisnis(event)" ><i class="fa-solid fa-pencil"></i></button>
+                                <button class="btn btn-outline-danger btn-rounded btn-fw btn-sm"><i class="fa-solid fa-trash"></i></button>
+
+                            </td>
+                            <td>@item.Fasilitas</td>
+                            <td>@item.Description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="Publik" role="tabpanel" aria-labelledby="Publik-tab">
+            <button class="btn btn-outline-success btn-rounded btn-fw btn-sm" onclick="showModal()"><i class="fa-solid fa-plus"></i></button>
+
+            <table class="table table-striped" id="FasilitasPublik" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="width: 1%;">No</th>
+                        <th style="width: 5%;">Action</th>
+                        <th>Jenis</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{ No = 1;}
+                    @foreach (var item in Model.FasilitasPublik)
+                    {
+                        <tr>
+                            <td>@(No++)</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-rounded btn-fw btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                                <button class="btn btn-outline-danger btn-rounded btn-fw btn-sm"><i class="fa-solid fa-trash"></i></button>
+
+                            </td>
+                            <td>@item.Fasilitas</td>
+                            <td>@item.Description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="Kamar" role="tabpanel" aria-labelledby="Kamar-tab">
+            <button class="btn btn-outline-success btn-rounded btn-fw btn-sm" onclick="showModal()"><i class="fa-solid fa-plus"></i></button>
+            <table class="table table-striped" id="FasilitasKamar" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="width: 1%;">No</th>
+                        <th style="width: 5%;">Action</th>
+                        <th>Jenis</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{ No = 1;}
+
+                    @foreach (var item in Model.FasilitasKamar)
+                    {
+                        <tr>
+                            <td>@(No++)</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-rounded btn-fw btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                                <button class="btn btn-outline-danger btn-rounded btn-fw btn-sm"><i class="fa-solid fa-trash"></i></button>
+
+                            </td>
+                            <td>@item.Fasilitas</td>
+                            <td>@item.Descrption</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="Makanan" role="tabpanel" aria-labelledby="Makanan-tab">
+            <button class="btn btn-outline-success btn-rounded btn-fw btn-sm" onclick="showModal()"><i class="fa-solid fa-plus"></i></button>
+            <table class="table table-striped" id="FasilitasMakanan" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="width: 1%;">No</th>
+                        <th style="width: 5%;">Action</th>
+                        <th>Jenis</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{ No = 1;}
+
+                    @foreach (var item in Model.FasilitasMakanan)
+                    {
+                        <tr>
+                            <td>@(No++)</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-rounded btn-fw btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                                <button class="btn btn-outline-danger btn-rounded btn-fw btn-sm"><i class="fa-solid fa-trash"></i></button>
+
+                            </td>
+                            <td>@item.MakananMinuman</td>
+                            <td>@item.Description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="Transportasi" role="tabpanel" aria-labelledby="Transportasi-tab">
+            <button class="btn btn-outline-success btn-rounded btn-fw btn-sm" onclick="showModal()"><i class="fa-solid fa-plus"></i></button>
+            <table class="table table-striped" id="FasilitasTransportasi" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="width: 1%;">No</th>
+                        <th style="width: 5%;">Action</th>
+                        <th>Jenis</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{ No = 1;}
+                    @foreach (var item in Model.FasilitasTransportasi)
+                    {
+                        <tr>
+                            <td>@(No++)</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-rounded btn-fw btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                                <button class="btn btn-outline-danger btn-rounded btn-fw btn-sm"><i class="fa-solid fa-trash"></i></button>
+
+                            </td>
+                            <td>@item.Fasilitas</td>
+                            <td>@item.Description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="state"></div>
+@Html.Hidden("state","")
+
+@section Scripts {
+    <script>
+        var index = (function ($) {
+            var self = this;
+            return {
+                CreatePopUpBisnis: function (e) {
+                    e.preventDefault();
+                    $.get('@Url.Action("CreatePopUpBisnis" , "MasterFasilitas")', function (data) {
+                        $("#modalBodyContent").html(data);
+                        $("#myModal").modal('show');
+                    })
+                    $("#state").val("Create");
+                },
+                EditPopUpBisnis: function (e) {
+                    e.preventDefault();
+                    var Id = event.currentTarget.getAttribute('data-Id');
+                    $.get('@Url.Action("EditPopUpBisnis" , "MasterFasilitas")' + '?Id=' + Id, function (data) {
+                        $("#modalBodyContent").html(data);
+                        $("#myModal").modal('show');
+                    })
+                    $("#state").val("Edit");
+
+                },
+                SavePopupBisnis: function (e) {
+                    e.preventDefault();
+                    var url = "";
+                    if ($("#state").val() == "Create") {
+                        var url = "@Url.Action("CreatePopUpBisnis", "MasterFasilitas")";
+                    } else {
+                        var url = "@Url.Action("EditPopUpBisnis", "MasterFasilitas")";
+                    }
+                    console.log(url);
+
+                    $.ajax({
+                        type: "POST",
+                        data: $("#frm").serialize(),
+                        url: url,
+                        async: false,
+                        success: function (result) {
+                            console.log(result);
+                            if (result == "Success") {
+                                iziToast.success({
+                                    title: 'Success',
+                                    position: 'center',
+                                    timeout: 50000,
+                                    message: result
+                                });
+                                $("#myModal").modal('hide');
+                            } else {
+                                iziToast.error({
+                                    title: 'Error',
+                                    position: 'center',
+                                    timeout: 50000,
+                                    message: result
+                                });
+                            }
+                        }
+                    })
+
+                }
+            }
+        })(jQuery);
+
+        $(document).ready(function (e) {
+            new DataTable('#FasilitasBisnis');
+            new DataTable('#FasilitasPublik');
+            new DataTable('#FasilitasUmum');
+            new DataTable('#FasilitasMakanan');
+            new DataTable('#FasilitasTransportasi');
+            new DataTable('#FasilitasKamar');
+
+         });
+
+    </script>
+}

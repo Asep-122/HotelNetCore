@@ -1,0 +1,55 @@
+﻿
+<div>
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#Floor" type="button" role="tab" aria-controls="home" aria-selected="true">Floor</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="TypeRoom-tab" data-bs-toggle="tab" data-bs-target="#TypeRoom" type="button" role="tab" aria-controls="TypeRoom" aria-selected="false">Type Room</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="Room-tab" data-bs-toggle="tab" data-bs-target="#Room" type="button" role="tab" aria-controls="Room" aria-selected="false">Room</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="Floor" role="tabpanel" aria-labelledby="Floor-tab">
+            <button class="btn btn-info btn-sm" id="sendButton"><i class="fa fa-pencil"></i>Add</button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Floor</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Lantai 1</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Lantai 2</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>Lantai 3</td>
+                        <td>24</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <ul id="messageList"></ul>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="TypeRoom" role="tabpanel" aria-labelledby="TypeRoom-tab">
+            <h1>Room Tab Content</h1>
+        </div>
+        <div class="tab-pane fade" id="Room" role="tabpanel" aria-labelledby="Room-tab">
+            <h1>Room Tab Content</h1>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/lib/Chat.js"></script>

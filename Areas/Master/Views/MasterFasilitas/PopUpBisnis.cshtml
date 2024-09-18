@@ -1,0 +1,26 @@
+﻿@model Hotel.Models.Fasilitas.FasilitasEditViewModels
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frm", name = "frm" }))
+{
+    @Html.HiddenFor(x => x.Id);
+    <div class="modal-header" style="background-color:transparent">
+        <h5 class="modal-title" id="myModalLabel">Fasilitas Bisnis</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="mb-3">
+            <label for="Jenis" class="form-label">Jenis Fasilitas</label>
+            <input type="text" class="form-control" id="FasilitasBisnis" name="Fasilitas" value="@Model.JenisFasilitas">
+        </div>
+        <div class="mb-3">
+            <label for="Description" class="form-label">Description</label>
+            <textarea type="text" class="form-control" id="DescriptionBisnis" name="Description" style="height:125px;">@Model.Description</textarea>
+        </div>
+    </div>
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary btn-fw" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-primary btn-fw" onclick="index.SavePopupBisnis(event)">Save</button>
+    </div>
+
+}
