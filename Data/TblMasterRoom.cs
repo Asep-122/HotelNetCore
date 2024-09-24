@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Hotel.Data
 {
-    public partial class TblMasterRoom d
+    public partial class TblMasterRoom
     {
         public int Id { get; set; }
         public string TipeKamar { get; set; }
