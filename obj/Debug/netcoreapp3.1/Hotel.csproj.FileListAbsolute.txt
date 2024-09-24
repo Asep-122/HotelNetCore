@@ -872,11 +872,6 @@ C:\Users\asepm\source\repos\Hotel\bin\Debug\netcoreapp3.1\runtimes\win\lib\netst
 C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\Hotel.Views.pdb
 C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\staticwebassets\Hotel.StaticWebAssets.Manifest.cache
 C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\Hotel.genruntimeconfig.cache
-C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\Hotel.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\Hotel.sourcelink.json
-C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\staticwebassets\Hotel.StaticWebAssets.Pack.cache
-C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.Hotel.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.build.Hotel.props
-C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildMultiTargeting.Hotel.props
-C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildTransitive.Hotel.props
-C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\Hotel.csproj.Up2Date
+C:\Users\asepm\source\repos\Hotel\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\Hotel.csproj.CopyComplete
+C:\Users\asepm\source\repos\Hotel\obj\Debug\netcoreapp3.1\staticwebassets\Hotel.StaticWebAssets.xml
