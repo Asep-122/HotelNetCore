@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hotel.Controllers
 {
-    public class BookingEntryController  d : Controller
+    public class BookingEntryController : Controller
     {
         private HMSContext HMS;
 
