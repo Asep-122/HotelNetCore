@@ -10,7 +10,7 @@
         "projectUniqueName": "C:\\Users\\asepm\\source\\repos\\Hotel\\Hotel.csproj",
         "projectName": "Hotel",
         "projectPath": "C:\\Users\\asepm\\source\\repos\\Hotel\\Hotel.csproj",
-        "packagesPath": "C:\\Users\\asepm\\.nuget\\packages\\",
+        "packagesPath": "C:\\windows\\system32\\config\\systemprofile\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\asepm\\source\\repos\\Hotel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -18,7 +18,7 @@
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\asepm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\windows\\system32\\config\\systemprofile\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -27,11 +27,10 @@
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 21.1\\Components\\System\\Components\\packages": {},
+          "C:\\Program Files (x86)\\DevExpress 21.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.telerik.com/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -87,10 +86,6 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
-            },
-            "Telerik.UI.for.AspNet.Core.Trial": {
-              "target": "Package",
-              "version": "[2024.1.319, )"
             }
           },
           "imports": [

@@ -8,8 +8,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Kendo.Mvc.UI;
-using Kendo.Mvc.Extensions;
 
 namespace Hotel.Controllers
 {

@@ -1,11 +1,9 @@
 ﻿using Hotel.Data;
 using Microsoft.AspNetCore.Mvc;
 using Hotel.Models.Reservation;
-using Kendo.Mvc.Extensions;
 using System.Linq;
 using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Telerik.SvgIcons;
 
 namespace Hotel.Controllers
 {

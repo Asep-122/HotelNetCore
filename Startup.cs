@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Kendo.Mvc.Extensions;
 using Hotel.Hubs;
 
 namespace Hotel
@@ -35,7 +34,6 @@ namespace Hotel
             services.AddDbContext<HMSContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("MyDatabaseConnection"))
             );
-            services.AddKendo();
             services.AddSignalR();
         }
 
