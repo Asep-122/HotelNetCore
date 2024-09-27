@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Controllers
 {
+    [Area("Master")]
     public class MasterRoomController : Controller
     {
         public IActionResult Index()

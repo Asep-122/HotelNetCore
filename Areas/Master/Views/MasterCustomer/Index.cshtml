@@ -1,0 +1,43 @@
+﻿@model Hotel.Models.Customer.IndexViewModel
+@{
+    Layout = "_Layout";
+
+}
+
+
+<div>
+    <button class="btn btn-outline-success btn-rounded btn-fw btn-sm" onclick="showModal()"><i class="fa-solid fa-plus"></i></button>
+    <table class="table table-striped" id="Customer" style="width: 100%;">
+        <thead>
+            <tr>
+                <th style="width: 1%;">No</th>
+                <th style="width: 5%;">Action</th>
+                <th>Nik</th>
+                <th>Nama</th>
+                <th>Jenis</th>
+                <th>Agama</th>
+                <th>KewargaNegaraan</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{ int No = 1;}
+
+            @foreach (var item in Model.ListCustomer)
+            {
+                <tr>
+                    <td>@(No++)</td>
+                    <td>
+                        <button class="btn btn-outline-info btn-rounded btn-fw btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="btn btn-outline-danger btn-rounded btn-fw btn-sm"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                    <td>@item.Nik</td>
+                    <td>@item.Nama</td>
+                    <td>@item.JenisKelamin</td>
+                    <td>@item.Agama</td>
+                    <td>@item.KewargaNegaraan</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

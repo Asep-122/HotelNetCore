@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Controllers
 {
+    [Area("Master")]
     public class MasterFasilitasController : Controller
     {
         private HMSContext HMS;
@@ -20,16 +21,18 @@ namespace Hotel.Controllers
         public MasterFasilitasController(HMSContext HMS){
             this.HMS = HMS;
         }
+
+
         public IActionResult Index()
         {
             var Models = new FasilitasEditViewModels(){
 
-                 FasilitasBisnis = HMS.Query<TblFasilitasBisinis>(),
-                 FasilitasPublik = HMS.Query<TblFasilitasPublik>(),
-                 FasilitasUmum = HMS.Query<TblFasilitasUmum>(),
-                 FasilitasMakanan = HMS.Query<TblFasilitasMakanan>(),
-                 FasilitasTransportasi = HMS.Query<TblFasilitasTransportasi>(),
-                 FasilitasKamar = HMS.Query<TblFasilitasKamar>(),
+                 FasilitasBisnis = HMS.Set<TblFasilitasBisinis>(),
+                 FasilitasPublik = HMS.Set<TblFasilitasPublik>(),
+                 FasilitasUmum = HMS.Set<TblFasilitasUmum>(),
+                 FasilitasMakanan = HMS.Set<TblFasilitasMakanan>(),
+                 FasilitasTransportasi = HMS.Set<TblFasilitasTransportasi>(),
+                 FasilitasKamar = HMS.Set<TblFasilitasKamar>()
             };
 
 
@@ -66,7 +69,7 @@ namespace Hotel.Controllers
         {
             var model = new FasilitasEditViewModels();
 
-            var data = HMS.Query<TblFasilitasBisinis>().Where(x => x.Id == Id).FirstOrDefault();
+            var data = HMS.Set<TblFasilitasBisinis>().Where(x => x.Id == Id).FirstOrDefault();
 
             model.JenisFasilitas = data.Fasilitas;
             model.Description = data.Description;
@@ -80,7 +83,7 @@ namespace Hotel.Controllers
 
             try
             {
-                var data = HMS.Query<TblFasilitasBisinis>().Where(x => x.Id == models.Id).FirstOrDefault();
+                var data = HMS.Set<TblFasilitasBisinis>().Where(x => x.Id == models.Id).FirstOrDefault();
 
                 data.Fasilitas = models.Fasilitas;
                 data.Description = models.Description;

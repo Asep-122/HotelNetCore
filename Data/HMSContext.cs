@@ -32,13 +32,13 @@ namespace Hotel.Data
         public virtual DbSet<TblReservation> TblReservation { get; set; }
         public virtual DbSet<TblService> TblService { get; set; }
         public virtual DbSet<TblTipePembayaran> TblTipePembayaran { get; set; }
+        public virtual DbSet<TblCustomer> TblCustomer { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=ASEPMUNANDAR122;Database=HMS;User ID=sa;Password=Laskar122;Integrated Security=false;");
             }
         }
@@ -295,6 +295,52 @@ namespace Hotel.Data
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<TblCustomer>(entity =>
+            {
+                entity.HasKey(e => e.Nik);
+
+                entity.ToTable("tbl_Customer");
+
+                entity.Property(e => e.Nik)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Agama)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Alamat).HasColumnType("text");
+
+                entity.Property(e => e.JenisKelamin)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.KartuPelajar)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.KewargaNegaraan)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Nama)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Pekerjaan)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.StatusPribadi)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TempatLahir)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TglLahir).HasColumnType("datetime");
+            });
 
             OnModelCreatingPartial(modelBuilder);
         }

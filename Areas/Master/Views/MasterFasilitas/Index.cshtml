@@ -9,7 +9,7 @@
 <div style="width: 100%;">
     <ul class="nav nav-tabs" id="myTab">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#Bisnis" type="button" role="tab" aria-controls="home" aria-selected="true">Bisnis</button>
+            <button class="nav-link active" id="Bisnis-tab" data-bs-toggle="tab" data-bs-target="#Bisnis" type="button" role="tab" aria-controls="home" aria-selected="true">Bisnis</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="Publik-tab" data-bs-toggle="tab" data-bs-target="#Publik" type="button" role="tab" aria-controls="Publik" aria-selected="false">Publik</button>
@@ -30,7 +30,6 @@
 
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="Bisnis" role="tabpanel" aria-labelledby="Bisnis-tab">
-            <button class="btn btn-outline-success btn-rounded btn-fw btn-sm" onclick="index.CreatePopUpBisnis(event)"><i class="fa-solid fa-plus"></i></button>
             <table class="table table-striped" id="FasilitasBisnis" style="width: 100%;">
                 <thead>
                     <tr>
@@ -60,8 +59,6 @@
             </table>
         </div>
         <div class="tab-pane fade" id="Publik" role="tabpanel" aria-labelledby="Publik-tab">
-            <button class="btn btn-outline-success btn-rounded btn-fw btn-sm" onclick="showModal()"><i class="fa-solid fa-plus"></i></button>
-
             <table class="table table-striped" id="FasilitasPublik" style="width: 100%;">
                 <thead>
                     <tr>
@@ -112,7 +109,6 @@
                             <td>
                                 <button class="btn btn-outline-info btn-rounded btn-fw btn-sm"><i class="fa-solid fa-pencil"></i></button>
                                 <button class="btn btn-outline-danger btn-rounded btn-fw btn-sm"><i class="fa-solid fa-trash"></i></button>
-
                             </td>
                             <td>@item.Fasilitas</td>
                             <td>@item.Descrption</td>
@@ -186,21 +182,43 @@
 </div>
 <div id="state"></div>
 @Html.Hidden("state","")
+@Html.Hidden("stateTab","")
 
 @section Scripts {
     <script>
         var index = (function ($) {
             var self = this;
             return {
-                CreatePopUpBisnis: function (e) {
+                Create: function (e) {
                     e.preventDefault();
-                    $.get('@Url.Action("CreatePopUpBisnis" , "MasterFasilitas")', function (data) {
+                    $("#state").val("Create");
+                    var url = "";
+                    if ($("#stateTab").val() == "Bisnis-tab") {
+                        url = '@Url.Action("CreatePopUpBisnis" , "MasterFasilitas")';
+                    }
+                    else if ($("#stateTab").val() == "Publik-tab") {
+                        url = '@Url.Action("CreatePopUpPublik", "MasterFasilitas")';
+                    }
+                    else if ($("#stateTab").val() == "Umum-tab") {
+                        url = '@Url.Action("CreatePopUpUmum", "MasterFasilitas")';
+                    }
+                    else if ($("#stateTab").val() == "Kamar-tab") {
+                        url = '@Url.Action("CreatePopKamar", "MasterFasilitas")';
+                    }
+                    else if ($("#stateTab").val() == "Makanan-tab") {
+                        url = '@Url.Action("CreatePopUpMakanan", "MasterFasilitas")';
+                    }
+                    else {
+                        url = '@Url.Action("CreatePopUpTransportasi", "MasterFasilitas")';
+                    }
+
+                    $.get(url, function (data) {
                         $("#modalBodyContent").html(data);
                         $("#myModal").modal('show');
                     })
-                    $("#state").val("Create");
+
                 },
-                EditPopUpBisnis: function (e) {
+                Edit: function (e) {
                     e.preventDefault();
                     var Id = event.currentTarget.getAttribute('data-Id');
                     $.get('@Url.Action("EditPopUpBisnis" , "MasterFasilitas")' + '?Id=' + Id, function (data) {
@@ -251,12 +269,38 @@
         })(jQuery);
 
         $(document).ready(function (e) {
+
+            $("#toolbarAdd").click(index.Create);
+            $("#stateTab").val("Bisnis-tab");
+
+
             new DataTable('#FasilitasBisnis');
             new DataTable('#FasilitasPublik');
             new DataTable('#FasilitasUmum');
             new DataTable('#FasilitasMakanan');
             new DataTable('#FasilitasTransportasi');
             new DataTable('#FasilitasKamar');
+
+            $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var tab = $(e.target).attr("id"); // Mendapatkan ID tab yang aktif
+                if (tab === "Bisnis-tab") {
+                    $("#stateTab").val("Bisnis-tab");
+                }
+                else if (tab === "Publik-tab") { // Periksa dengan ID yang benar
+                    $("#stateTab").val("Publik-tab");
+                } else if (tab === "Umum-tab") {
+                    $("#stateTab").val("Umum-tab");
+                }
+                else if (tab === "Kamar-tab") { // Periksa dengan ID yang benar
+                    $("#stateTab").val("Kamar-tab");
+                }
+                else if (tab === "Makanan-tab") {
+                    $("#stateTab").val("Makanan-tab");
+                }
+                else {
+                    $("#stateTab").val("Transportasi-tab");
+                }
+            });
 
          });
 

@@ -4,13 +4,15 @@ using Hotel.Models.Reservation;
 using System.Linq;
 using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hotel.Controllers
 {
-    public class Reservation : Controller
+    [Area("Reservation")]
+    public class ReservationController : Controller
     {
         HMSContext HMS;
-        public Reservation(HMSContext HMS)
+        public ReservationController(HMSContext HMS)
         {
             this.HMS = HMS;
         }
@@ -18,7 +20,7 @@ namespace Hotel.Controllers
         public IActionResult Index()
         {
 
-            var getReservation = HMS.Query<TblReservation>().Select(x => new { KdReservation = x.KdReservation.Replace("RSV", "") });
+            var getReservation = HMS.Set<TblReservation>().Select(x => new { KdReservation = x.KdReservation.Replace("RSV", "") });
             string KodeReservation = "";
             if (getReservation.Count() == 0)
             {
@@ -37,7 +39,7 @@ namespace Hotel.Controllers
                 TglReservasi = DateTime.Now,
                 StartFrom = DateTime.Now,
                 EndTo = DateTime.Now,
-                ListKamar = HMS.Query<TblMasterKamar>().ToList()
+                ListKamar = HMS.Set<TblMasterKamar>().ToList()
             };
 
             return View(model);

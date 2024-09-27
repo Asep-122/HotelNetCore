@@ -1,0 +1,181 @@
+﻿@model Hotel.Models.Reservation.CreateEditViewModel
+@{
+    Layout = "_Layout";
+
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frm", name = "frm", @style = "width: 100%;", @class = "needs-validation" }))
+{
+
+    <table border="0">
+        <tr>
+            <td>
+                <label for="KdReservation">Kode Reservation</label>
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.KdReservation, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+            <td>
+                <label for="KdKamar">Kode Kamar</label>
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.KodeKamar, new SelectList(Model.ListKamar, "KdKamar", "TipeKamar"), new { @class = "form-select" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Tanggal Menginap</label>
+            </td>
+            <td colspan="3" style="display: flex;">
+                <div style="flex: 1;">
+                    @Html.TextBoxFor(x => x.StartFrom, "{0:yyyy-MM-dd}", new { @class = "form-control form-control-sm", type = "date", @style = "width:100%" })
+                </div>
+                <span style="flex: 0 0 auto;">-</span>
+                <div style="flex: 1;">
+                    @Html.TextBoxFor(x => x.EndTo, "{0:yyyy-MM-dd}", new { @class = "form-control form-control-sm", type = "date", @style = "width:100%" })
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <br />
+
+    <div style="width: 100%;">
+        <ul class="nav nav-pills flex-column flex-sm-row" id="myTab">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="Identitas-tab" data-bs-toggle="tab" data-bs-target="#Identitas" type="button" role="tab" aria-controls="home" aria-selected="true">Identitas</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="Payment-tab" data-bs-toggle="tab" data-bs-target="#Payment" type="button" role="tab" aria-controls="Payment" aria-selected="false">Payment</button>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content" id="myTabContent" style="width:100%">
+        <div class="tab-pane fade show active" id="Identitas" role="tabpanel" aria-labelledby="Identitas-tab">
+            <div class="row" style="width: 100%;">
+                @Html.ValidationSummary()
+                <div class="col-md-5">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Nik, new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(x => x.Nik, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.KartuPelajar, new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(x => x.KartuPelajar, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Nama, new { @class = "col-md-2 col-form-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(x => x.Nama, new { @class = "form-control", @required = "required" })
+                            <div class="invalid-feedback">
+                                @Html.ValidationMessageFor(m => m.Nama, message: "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.KewargaNegaraan, new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.KewargaNegaraan, new SelectList(Model.ListKamar, "KdKamar", "TipeKamar"), new { @class = "form-select", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Alamat, new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(x => x.Alamat, new { @class = "form-control", @style = "height:150px;", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" id="SaveReservation">Save</button>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Agama, new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.Agama, new SelectList(Model.ListKamar, "KdKamar", "TipeKamar"), new { @class = "form-select", @required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.StatusPribadi, new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(x => x.StatusPribadi, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.JenisKelamin, new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(x => x.JenisKelamin, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Pekerjaan, new { @class = "control-label", @required = "required" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(x => x.Pekerjaan, new SelectList(Model.ListKamar, "KdKamar", "TipeKamar"), new { @class = "form-select", @required = "required" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+@*        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault()
+                        console.log(form.checkValidity);
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        } else {
+                            $.ajax({
+                                method: "post",
+                                data: $("#frm").serialize(),
+                                url: "@Url.Action("SaveReservarsi", "Reservation")",
+                                success: function (e) {
+                                    alert(e);
+                                }
+                            })
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+*@
+        $(document).ready(function () {
+            $("#SaveReservation").click(function (event) {
+                event.preventDefault();
+                var form = $(this).closest('form');
+                console.log(form[0]);
+
+                if (!form[0].checkValidity()) {
+                    event.stopPropagation();
+
+                }
+
+                form.addClass('was-validated');
+            });
+        });
+    </script>
+
+}
