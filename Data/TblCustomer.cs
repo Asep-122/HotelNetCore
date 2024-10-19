@@ -10,7 +10,6 @@ namespace Hotel.Data
     public partial class TblCustomer
     {
         public string Nik { get; set; }
-        public string KartuPelajar { get; set; }
         public string Nama { get; set; }
         public string JenisKelamin { get; set; }
         public string Pekerjaan { get; set; }

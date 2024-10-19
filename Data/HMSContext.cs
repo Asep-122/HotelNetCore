@@ -175,6 +175,10 @@ namespace Hotel.Data
                     .HasMaxLength(8)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Agama)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Alamat).HasColumnType("text");
 
                 entity.Property(e => e.Description)
@@ -184,10 +188,6 @@ namespace Hotel.Data
                 entity.Property(e => e.EndTo).HasColumnType("datetime");
 
                 entity.Property(e => e.JenisKelamin)
-                    .HasMaxLength(1000)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.KartuPelajar)
                     .HasMaxLength(1000)
                     .IsUnicode(false);
 
@@ -218,6 +218,12 @@ namespace Hotel.Data
                 entity.Property(e => e.StatusReservation)
                     .HasMaxLength(1000)
                     .IsUnicode(false);
+
+                entity.Property(e => e.TempatLahir)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TglLahir).HasColumnType("datetime");
 
                 entity.Property(e => e.TglReservasi).HasColumnType("datetime");
 
@@ -312,10 +318,6 @@ namespace Hotel.Data
                 entity.Property(e => e.Alamat).HasColumnType("text");
 
                 entity.Property(e => e.JenisKelamin)
-                    .HasMaxLength(1000)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.KartuPelajar)
                     .HasMaxLength(1000)
                     .IsUnicode(false);
 

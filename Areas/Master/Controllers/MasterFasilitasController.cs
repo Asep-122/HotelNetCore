@@ -99,6 +99,66 @@ namespace Hotel.Controllers
             return Json(message);
         }
 
+        [HttpGet]
+        public IActionResult CreatePopUpPublik()
+        {
+            var model = new FasilitasEditViewModels();
+
+            return PartialView("PopUpPublik",model);
+        }
+
+        [HttpPost]
+        public IActionResult CreatePopUpPublik(IFormCollection form, TblFasilitasPublik model)
+        {
+            try
+            {
+                HMS.Add(model);
+                HMS.SaveChanges();
+                message = "Success";
+            }
+            catch(Exception ex)
+            {
+                message = ex.Message;
+            }
+
+            return Json(message);
+        }
+
+        [HttpGet]
+        public IActionResult EditPopUpPublik(int Id)
+        {
+            var model = new FasilitasEditViewModels();
+
+            var data = HMS.Set<TblFasilitasPublik>().Where(x => x.Id == Id).FirstOrDefault();
+
+            model.JenisFasilitas = data.Fasilitas;
+            model.Description = data.Description;
+
+            return PartialView("PopUpBisnis",model);
+        }
+
+        [HttpPost]
+        public IActionResult EditPopUpPublik(IFormCollection form,TblFasilitasPublik models)
+        {
+
+            try
+            {
+                var data = HMS.Set<TblFasilitasPublik>().Where(x => x.Id == models.Id).FirstOrDefault();
+
+                data.Fasilitas = models.Fasilitas;
+                data.Description = models.Description;
+                HMS.Update(data);
+                HMS.SaveChanges();
+                message = "Has Been Update";
+            }
+            catch(Exception ex)
+            {
+                message = ex.Message;
+            }
+
+            return Json(message);
+        }
+
     }
 
 }

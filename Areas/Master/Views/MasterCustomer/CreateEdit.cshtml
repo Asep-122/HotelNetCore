@@ -1,0 +1,177 @@
+﻿@model Hotel.Models.Customer.CreateEditViewModel
+
+@{
+    Layout = "_Layout";
+
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frm", name = "frm", @style = "width: 100%;" }))
+{
+    <div>
+        <div class="row" style="width: 100%;">
+            <div class="col-md-5">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Nik, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.Nik, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Nik, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.TempatLahir, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.TempatLahir, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.TempatLahir, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.JenisKelamin, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.JenisKelamin, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.JenisKelamin, null, new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.KewargaNegaraan, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.KewargaNegaraan, new List<SelectListItem> {
+                        new SelectListItem{ Value = "Argentina",Text = "Argentina"},
+                        new SelectListItem{ Value = "Brazil",Text = "Brazil"},
+                        new SelectListItem{ Value = "Indonesia",Text = "Indonesia"},
+                        new SelectListItem{ Value = "Malaysia",Text = "Malaysia"},
+
+                       }, "Pilih Negara", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.KewargaNegaraan, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Alamat, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(x => x.Alamat, new { @class = "form-control", @style = "height:150px;" })
+                        @Html.ValidationMessageFor(x => x.Alamat, null, new { @class = "text-danger" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Nama, new { @class = "col-md-2 col-form-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.Nama, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Nama, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.TglLahir, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.TglLahir, new { @class = "form-control", type = "date", value = Model.TglLahir.Value.ToString("yyyy-MM-dd") })
+                        @Html.ValidationMessageFor(x => x.TglLahir, null, new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Agama, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.Agama, new List<SelectListItem> {
+                        new SelectListItem { Value = "Islam",Text = "Islam"},
+                        new SelectListItem { Value = "Kristen",Text = "Kristen"},
+                        new SelectListItem { Value = "Katolik",Text = "Katolik"},
+                        new SelectListItem { Value = "Budha",Text = "Budha"},
+                        new SelectListItem { Value = "Konghucu",Text = "Konghucu"}
+                   }, "Pilih Agama", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Agama, null, new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.StatusPribadi, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.StatusPribadi, new List<SelectListItem> {
+                        new SelectListItem { Value = "Single",Text = "Single"},
+                        new SelectListItem { Value = "Menikah",Text = "Menikah"},
+                        new SelectListItem { Value = "Cerai",Text = "Nikah Cerai"},
+                   }, "Pilih Status", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.StatusPribadi, null, new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Pekerjaan, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(x => x.Pekerjaan, new List<SelectListItem> {
+                        new SelectListItem{ Value = "Karyawan Swasta",Text = "Karyawan Swasta"},
+                        new SelectListItem{ Value = "Pelajar",Text = "Pelajar"},
+                        new SelectListItem{ Value = "Mahasiswa",Text = "Mahasiswa"},
+                        new SelectListItem{ Value = "Pns",Text = "Pns"},
+                        new SelectListItem{ Value = "Industri",Text = "Industri"},
+                        new SelectListItem{ Value = "Petani",Text = "Petani"},
+                        new SelectListItem{ Value = "Tidak Bekerja",Text = "Tidak Bekerja"},
+                        new SelectListItem{ Value = "Lain-Lain",Text = "Lain-Lain"},
+                   }, "Pilih Pekerjaan", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Pekerjaan, null, new { @class = "text-danger" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:none">
+            <input type="submit" id="save" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        var CreateEdit = (function (e) {
+            var self = this;
+            return {
+                save: function (e) {
+                    $("#save").click();
+                }
+
+@*                save: function (e) {
+                    e.preventDefault();
+                    var url = ("@ViewBag.path" == "Create" ? "@Url.Action("Create")" : "@Url.Action("Edit")");
+                    console.log(astNotification);
+                    $.ajax({
+                        type: "POST",
+                        data: $("#frm").serialize(),
+                        url: url,
+                        success: function (result) {
+                            console.log(result);
+                            if (result == "Success") {
+                                iziToast.success({
+                                    title: 'Success',
+                                    position: 'center',
+                                    timeout: 50000,
+                                    message: result
+                                });
+                            } else {
+                                iziToast.error({
+                                    title: 'Error',
+                                    position: 'center',
+                                    timeout: 50000,
+                                    message: result
+                                });
+                            }
+                        }
+                    })
+                }
+*@            }
+        })(jQuery);
+
+        $(function ($) {
+            $("#toolbarBack").attr("href", "@Url.Action("Index")");
+            $("#toolbarSave").click(CreateEdit.save);
+            HotelToolbar.enableBack();
+            HotelToolbar.enableSave();
+
+        })
+    </script>
+
+
+}

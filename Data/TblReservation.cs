@@ -11,13 +11,15 @@ namespace Hotel.Data
     {
         public string KdReservation { get; set; }
         public string Nik { get; set; }
-        public string KartuPelajar { get; set; }
         public string Nama { get; set; }
         public string JenisKelamin { get; set; }
         public string Pekerjaan { get; set; }
         public string KewargaNegaraan { get; set; }
         public string StatusPribadi { get; set; }
         public string Alamat { get; set; }
+        public DateTime? TglLahir { get; set; }
+        public string TempatLahir { get; set; }
+        public string Agama { get; set; }
         public DateTime? TglReservasi { get; set; }
         public int KodeKamar { get; set; }
         public DateTime? StartFrom { get; set; }
